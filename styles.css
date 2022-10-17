@@ -1,0 +1,61 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 400px;
+    border: 1px solid gainsboro;
+}
+
+.title {
+    border-bottom: 1px solid gainsboro;
+    margin-bottom: 0;
+    padding-bottom: 16px;
+}
+
+.pading {
+    padding-left: 20px;
+}
+
+img {
+    max-width: 100%;
+}
+
+.btn1, .btn2, .btn3 {
+    width: 50px;
+    height: 50px;
+    flex-grow: 1;
+
+}
+
+.btn1 {
+    background-color: #90ee90;
+}
+
+.btn2 {
+    background-color: #87cefa;
+}
+
+.btn3 {
+    background-color: #ff0000;
+}
+
+.btn1:active {
+    background-color: #66c066;
+}
+
+.btn2:active {
+    background-color: #63a9d4;
+}
+
+.btn3:active {
+    background-color: #db0202;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+}
