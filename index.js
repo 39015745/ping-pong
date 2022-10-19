@@ -1,46 +1,38 @@
 const WinScore = document.querySelector('#WinScore');
-const btn1 = document.querySelector('.btn1');
-const btn2 = document.querySelector('.btn2');
-const btn3 = document.querySelector('.btn3');
-const player1 = document.querySelector('.player1');
-const player2 = document.querySelector('.player2');
 
-let score1 = 0;
-let score2 = 0;
+let player1 = {
+    score: 0,
+    btn: document.querySelector('.btn1'),
+    display: document.querySelector('.player1')
+};
 
-btn1.addEventListener('click', () => {
-    if (score1 < WinScore.value) {
-        score1++;
-        if (score1 == WinScore.value) {
-            btn1.disabled = true;
-            btn2.disabled = true;
-            player1.style.color = 'green';
-            player2.style.color = 'red';
+let player2 = {
+    score: 0,
+    btn: document.querySelector('.btn2'),
+    display: document.querySelector('.player2')
+};
+
+player1.btn.addEventListener('click', () => { update(player1, player2) });
+player2.btn.addEventListener('click', () => { update(player2, player1) });
+
+function update(player, opponent) {
+    if (player.score < WinScore.value) {
+        player.score++;
+        if (player.score == WinScore.value) {
+            player.btn.disabled = true;
+            opponent.btn.disabled = true;
+            player.display.style.color = 'green';
+            opponent.display.style.color = 'red';
         }
-        player1.innerText = score1;
+        player.display.innerText = player.score;
     };
-});
+}
 
-btn2.addEventListener('click', () => {
-    if (score2 < WinScore.value) {
-        score2++;
-        if (score2 == WinScore.value) {
-            btn1.disabled = true;
-            btn2.disabled = true;
-            player2.style.color = 'green';
-            player1.style.color = 'red';
-        }
-        player2.innerText = score2;
+document.querySelector('.btn3').addEventListener('click', () => {
+    for (let i of [player1, player2]) {
+        i.score = 0;
+        i.btn.disabled = false;
+        i.display.style.color = 'black';
+        i.display.innerText = 0;
     };
-});
-
-btn3.addEventListener('click', () => {
-    score1 = 0;
-    score2 = 0;
-    btn1.disabled = false;
-    btn2.disabled = false;
-    player2.style.color = 'black';
-    player1.style.color = 'black';
-    player1.innerText = score2;
-    player2.innerText = score2;
 });
